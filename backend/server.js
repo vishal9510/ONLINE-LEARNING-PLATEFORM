@@ -3,8 +3,6 @@ const connectDB = require('./config/db');
 const dotenv = require('dotenv');
 const cors = require('cors');
 
-
-
 // Load environment variables
 dotenv.config();
 
@@ -17,23 +15,16 @@ app.use(cors());
 app.use(express.json());
 
 
-
 // Import routes
 const authRoutes = require('./routes/authRoutes');
-const inventoryRoutes = require('./routes/inventoryRoutes');
-const orderRoutes = require('./routes/orderRoutes');
-
-
-
-
+const trackRoutes = require('./routes/trackRoutes');
+const habitRoutes = require('./routes/habitRoutes');
+require('./routes/dailynotification'); 
 
 // Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/inventory', inventoryRoutes);
-app.use('/api/orders', orderRoutes);
-
-
-
+app.use('/api/track', trackRoutes);
+app.use('/api/habit', habitRoutes);
 
 
 // Start Server
