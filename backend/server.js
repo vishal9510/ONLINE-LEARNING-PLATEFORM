@@ -17,14 +17,16 @@ app.use(express.json());
 
 // Import routes
 const authRoutes = require('./routes/authRoutes');
-const trackRoutes = require('./routes/trackRoutes');
-const habitRoutes = require('./routes/habitRoutes');
-require('./routes/dailynotification'); 
+const courseRoutes = require('./routes/courseRoutes');
+const enrollmentRoutes = require('./routes/enrollmentRoutes');
+const lessonRoutes = require('./routes/lessonRoutes');
+
 
 // Routes
 app.use('/api/auth', authRoutes);
-app.use('/api/track', trackRoutes);
-app.use('/api/habit', habitRoutes);
+app.use('/api/course', courseRoutes);
+app.use('/api/enrollment', enrollmentRoutes);
+app.use('/api/lessons', lessonRoutes);
 
 
 // Start Server

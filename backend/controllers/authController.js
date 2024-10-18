@@ -10,7 +10,7 @@ const generateToken = (user) => {
 
 // Register a new user
 const register = async (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, role } = req.body;
 
   try {
     const userExists = await User.findOne({ email });
@@ -23,12 +23,14 @@ const register = async (req, res) => {
       username,
       email,
       password,
+      role
     });
 
     res.status(201).json({
       _id: user._id,
       username: user.username,
       email: user.email,
+      role: user.role,
       token: generateToken(user),
     });
   } catch (error) {
@@ -48,6 +50,7 @@ const login = async (req, res) => {
         _id: user._id,
         name: user.name,
         email: user.email,
+        role: user.role,
         token: generateToken(user),
       });
     } else {
